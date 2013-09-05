@@ -9,11 +9,11 @@ Repository: https://github.com/Hendler/goling
 
 */
 
+package client
 
-package main
+import "fmt" 
 
-import "fmt"
-
-func main() {
+func Hello() {
     fmt.Printf("Hello, world.\n")
 }
+
