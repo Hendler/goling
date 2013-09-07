@@ -56,11 +56,23 @@ func Send( conn net.Conn , message string )(string){
     return status
 }
 
+func Close( conn net.Conn ) {
+    err := conn.Close( )
+    if err != nil {
+        // handle error
+        log.Fatal(err)
+    }
+}
+
+/**
+    Example usage 
+*/
 func FreelingTest(){
     conn := Init()
     fmt.Printf("Connected\n\n")
     status := Send( conn , "Every Good Boy Deserves Fudge.")
     fmt.Printf("\nResults: %s\n", status)
+    Close(conn)
 }
 
 
