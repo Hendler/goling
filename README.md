@@ -1,22 +1,26 @@
 goling
 ======
 
-Go client for Freeling NLP - http://nlp.lsi.upc.edu/freeling/
+Go client for Freeling C++ NLP Library - http://nlp.lsi.upc.edu/freeling/
 
-Socket client based on the PHP client. 
+## Usage 
 
-export GOPATH=$GOPATH:$HOME/goling
+    go get github.com/hendler/goling/client
 
-To test Freeling sockets from Bash, use socat, e.g.
-    
-    socat tcp-connect:localhost:50005 exec:'bash -i'
+    import (
+        "github.com/hendler/goling/client"
+    )
 
+## TODO
 
-echo -ne "n\0m\0k"
+ - Response parser. Strings come back in one line per word. 
+ - cgo embedded version (interact with C/C++ directly and build into programe)
+   - reasons for this are that Freeling has many configurable parsing levels  
 
-# Appendix
+## Appendix
  
  - installing Freeling on OSX http://nlp.lsi.upc.edu/freeling/index.php?option=com_simpleboard&Itemid=65&func=view&id=2485&catid=5
+ 
     aclocal
     sudo glibtoolize --force
     autoconf
@@ -29,6 +33,12 @@ echo -ne "n\0m\0k"
 - launching Freeling in server mode
     analyze -f en.cfg  --server --port 50005 &
 
+Tried test Freeling sockets from Bash, use socat, e.g. - needs null terminated strings...
+    
+    socat tcp-connect:localhost:50005 exec:'bash -i'
+    echo -ne "n\0m\0k"
+
  - more socat examples
    http://stuff.mit.edu/afs/sipb/machine/penguin-lust/src/socat-1.7.1.2/EXAMPLES
    http://www.geeklab.info/2011/12/playing-with-the-sockets-socat-and-netcat/
+

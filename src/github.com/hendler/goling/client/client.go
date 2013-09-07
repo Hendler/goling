@@ -1,6 +1,7 @@
 /**
 
-
+Assumes the Freeling server has been started already. 
+analyze -f en.cfg  --server --port 50005 &
 
 
 Based on 
@@ -32,6 +33,9 @@ func Init()(net.Conn){
     return conn
 }
 
+/**
+
+*/
 func Send( conn net.Conn , message string )(string){
     //null terminated string
     //var zb = []byte{0}
@@ -56,6 +60,9 @@ func Send( conn net.Conn , message string )(string){
     return status
 }
 
+/**
+    Close the connection
+*/
 func Close( conn net.Conn ) {
     err := conn.Close( )
     if err != nil {
@@ -70,7 +77,7 @@ func Close( conn net.Conn ) {
 func FreelingTest(){
     conn := Init()
     fmt.Printf("Connected\n\n")
-    status := Send( conn , "Every Good Boy Deserves Fudge.")
+    status := Send( conn , "Every good boy deserves fudge.")
     fmt.Printf("\nResults: %s\n", status)
     Close(conn)
 }
