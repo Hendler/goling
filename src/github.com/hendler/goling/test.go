@@ -17,6 +17,6 @@ import (
 )
 
 func main() {
-    client.Hello()
+     client.FreelingTest()
 }
 

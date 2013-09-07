@@ -7,6 +7,12 @@ Socket client based on the PHP client.
 
 export GOPATH=$GOPATH:$HOME/goling
 
+To test Freeling sockets from Bash, use socat, e.g.
+    
+    socat tcp-connect:localhost:50005 exec:'bash -i'
+
+
+echo -ne "n\0m\0k"
 
 # Appendix
  
@@ -22,3 +28,7 @@ export GOPATH=$GOPATH:$HOME/goling
 
 - launching Freeling in server mode
     analyze -f en.cfg  --server --port 50005 &
+
+ - more socat examples
+   http://stuff.mit.edu/afs/sipb/machine/penguin-lust/src/socat-1.7.1.2/EXAMPLES
+   http://www.geeklab.info/2011/12/playing-with-the-sockets-socat-and-netcat/

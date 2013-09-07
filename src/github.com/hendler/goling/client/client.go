@@ -17,3 +17,6 @@ func Hello() {
     fmt.Printf("Hello, world.\n")
 }
 
+func FreelingTest(){
+
+}
