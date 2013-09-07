@@ -19,6 +19,7 @@ import (
     "net"
     "bufio"
     "log"
+    "strings"
 ) 
 
 
@@ -42,7 +43,7 @@ func Send( conn net.Conn , message string )(string){
         log.Fatal(err)
     }
 
-    if status != "FL-SERVER-READY" {
+    if strings.EqualFold(status, "FL-SERVER-READY") {
         log.Fatal("FREELING SERVER NOT READY")
     }
 
