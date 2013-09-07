@@ -1,5 +1,8 @@
 /**
 
+
+
+
 Based on 
 Version: 0.1
 Author: Jonathan Hendler
@@ -15,8 +18,6 @@ import (
     "fmt"
     "net"
     "bufio"
-    _"io"
-    _"os"
     "log"
 ) 
 
@@ -25,7 +26,6 @@ func Init()(net.Conn){
     conn, err := net.Dial("tcp", "localhost:50005")
     if err != nil {
         // handle error
-        //fmt.Printf("ERROR CONNECTING\n\n")
         log.Fatal(err)
     }
     return conn
@@ -33,10 +33,21 @@ func Init()(net.Conn){
 
 func Send( conn net.Conn , message string )(string){
     //null terminated string
-    // //var zb = []byte{0}
+    //var zb = []byte{0}
     //http://stackoverflow.com/questions/12359777/how-can-i-convert-a-null-terminated-string-in-a-byte-buffer-to-a-string-in-go
-    fmt.Fprintf(conn, "%s%c", message,  '\x00')
+    fmt.Fprintf(conn, "RESET_STATS%c", '\x00')
     status, err := bufio.NewReader(conn).ReadString('\x00')
+    if err != nil {
+        // handle error
+        log.Fatal(err)
+    }
+
+    if status != "FL-SERVER-READY" {
+        log.Fatal("FREELING SERVER NOT READY")
+    }
+
+    fmt.Fprintf(conn, "%s%c", message,  '\x00')
+    status, err = bufio.NewReader(conn).ReadString('\x00')
     if err != nil {
         // handle error
         log.Fatal(err)
@@ -47,9 +58,7 @@ func Send( conn net.Conn , message string )(string){
 func FreelingTest(){
     conn := Init()
     fmt.Printf("Connected\n\n")
-    status := Send( conn , "RESET_STATS")
-    fmt.Printf("\nResults: %s\n", status)
-    status = Send( conn , "Every Good Boy Deserves Fudge.")
+    status := Send( conn , "Every Good Boy Deserves Fudge.")
     fmt.Printf("\nResults: %s\n", status)
 }
 
