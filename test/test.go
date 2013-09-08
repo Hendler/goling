@@ -1,6 +1,7 @@
 /**
 
-Based on 
+goling Go Freeling client
+
 Version: 0.1
 Author: Jonathan Hendler
 Contact: jonathan dot hendler at gmail dot com
@@ -14,9 +15,14 @@ package main
 
 import (
     "freeling"
+    "fmt"
 )
 
 func main() {
-     freeling.FreelingTest()
+    conn := freeling.Init( "localhost" , "50005" )
+    fmt.Printf("Connected\n\n")
+    status := freeling.Send( conn , "Every good boy deserves fudge.")
+    fmt.Printf("\nResults: %s\n", status)
+    freeling.Close(conn)
 }
 

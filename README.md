@@ -16,7 +16,8 @@ Go client for Freeling C++ NLP Library - http://nlp.lsi.upc.edu/freeling/
  - Response parser. Strings come back in one line per word. 
  - cgo embedded version (interact with C/C++ directly and build into programe)
    - reasons for this are that Freeling has many configurable parsing levels  
- - configurable host, ports
+ - proper test setup
+ 
 
 
 ## Appendix

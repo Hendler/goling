@@ -1,5 +1,7 @@
 /**
 
+goling Go Freeling client
+
 Assumes the Freeling server has been started already. 
 analyze -f en.cfg  --server --port 50005 &
 
@@ -24,8 +26,9 @@ import (
 ) 
 
 
-func Init()(net.Conn){
-    conn, err := net.Dial("tcp", "localhost:50005")
+func Init( host string , port string )(net.Conn){
+    server := [] string{ host, port}
+    conn, err := net.Dial( "tcp" , strings.Join( server , ":") )
     if err != nil {
         // handle error
         log.Fatal(err)
@@ -71,15 +74,6 @@ func Close( conn net.Conn ) {
     }
 }
 
-/**
-    Example usage 
-*/
-func FreelingTest(){
-    conn := Init()
-    fmt.Printf("Connected\n\n")
-    status := Send( conn , "Every good boy deserves fudge.")
-    fmt.Printf("\nResults: %s\n", status)
-    Close(conn)
-}
+ 
 
 
