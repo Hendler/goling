@@ -6,7 +6,6 @@ Assumes the Freeling server has been started already.
 analyze -f en.cfg  --server --port 50005 &
 
 
-Based on 
 Version: 0.1
 Author: Jonathan Hendler
 Contact: jonathan dot hendler at gmail dot com
