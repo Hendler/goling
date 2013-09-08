@@ -5,10 +5,10 @@ Go client for Freeling C++ NLP Library - http://nlp.lsi.upc.edu/freeling/
 
 ## Usage 
 
-    go get github.com/hendler/goling/client
+    go get github.com/Hendler/goling/freeling
 
     import (
-        "github.com/hendler/goling/client"
+        "github.com/Hendler/goling/freeling"
     )
 
 ## TODO
