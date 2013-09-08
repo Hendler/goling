@@ -13,10 +13,10 @@ Repository: https://github.com/Hendler/goling
 package main
 
 import (
-    "github.com/hendler/goling/client"
+    "freeling"
 )
 
 func main() {
-     client.FreelingTest()
+     freeling.FreelingTest()
 }
 

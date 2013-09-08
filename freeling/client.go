@@ -13,7 +13,7 @@ Repository: https://github.com/Hendler/goling
 
 */
 
-package client
+package freeling
 
 import (
     "fmt"
