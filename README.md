@@ -16,11 +16,12 @@ Go client for Freeling C++ NLP Library - http://nlp.lsi.upc.edu/freeling/
  - Response parser. Strings come back in one line per word. 
  - cgo embedded version (interact with C/C++ directly and build into programe)
    - reasons for this are that Freeling has many configurable parsing levels  
+ - configurable host, ports
+
 
 ## Appendix
- 
  - installing Freeling on OSX http://nlp.lsi.upc.edu/freeling/index.php?option=com_simpleboard&Itemid=65&func=view&id=2485&catid=5
- 
+
     aclocal
     sudo glibtoolize --force
     autoconf
