@@ -35,14 +35,27 @@ func Init( host string , port string )(net.Conn){
     return conn
 }
 
-/**
-
-*/
 func Send( conn net.Conn , message string )(string){
+    ResetStats(conn)
+    return sendMessage(conn , message )
+}
+
+func PrintStats( conn net.Conn )(string){
+    return sendMessage( conn , "PRINT_STATS" );
+} 
+
+func ResetStats( conn net.Conn )(string){
+    return sendMessage( conn , "RESET_STATS" );
+}
+
+/**
+generic message sending
+*/
+func sendMessage( conn net.Conn , message string )( string ){
     //null terminated string
     //var zb = []byte{0}
     //http://stackoverflow.com/questions/12359777/how-can-i-convert-a-null-terminated-string-in-a-byte-buffer-to-a-string-in-go
-    fmt.Fprintf(conn, "RESET_STATS%c", '\x00')
+    fmt.Fprintf(conn, "%s%c", message , '\x00')
     status, err := bufio.NewReader(conn).ReadString('\x00')
     if err != nil {
         // handle error
@@ -53,14 +66,9 @@ func Send( conn net.Conn , message string )(string){
         log.Fatal("FREELING SERVER NOT READY")
     }
 
-    fmt.Fprintf(conn, "%s%c", message,  '\x00')
-    status, err = bufio.NewReader(conn).ReadString('\x00')
-    if err != nil {
-        // handle error
-        log.Fatal(err)
-    }
     return status
 }
+ 
 
 /**
     Close the connection

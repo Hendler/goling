@@ -11,14 +11,14 @@ Repository: https://github.com/Hendler/goling
 */
 
 
-package main
+package freeling
 
 import (
-    "freeling"
     "fmt"
+    "testing"
 )
 
-func main() {
+func Test() {
     conn := freeling.Init( "localhost" , "50005" )
     fmt.Printf("Connected\n\n")
     status := freeling.Send( conn , "Every good boy deserves fudge.")
