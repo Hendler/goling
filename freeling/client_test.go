@@ -18,11 +18,20 @@ import (
     "testing"
 )
 
-func Test() {
-    conn := freeling.Init( "localhost" , "50005" )
+func Test( t *testing.T ) {
+    conn := Init( "localhost" , "50005" )
     fmt.Printf("Connected\n\n")
-    status := freeling.Send( conn , "Every good boy deserves fudge.")
+    status := Send( conn , "Every good boy deserves fudge.")
     fmt.Printf("\nResults: %s\n", status)
-    freeling.Close(conn)
+    Close(conn)
 }
+
+// 
+// func main() {
+//     conn := freeling.Init( "localhost" , "50005" )
+//     fmt.Printf("Connected\n\n")
+//     status := freeling.Send( conn , "Every good boy deserves fudge.")
+//     fmt.Printf("\nResults: %s\n", status)
+//     freeling.Close(conn)
+// }
 
